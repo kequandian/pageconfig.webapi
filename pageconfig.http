@@ -1,0 +1,46 @@
+### PageConfig API Test File
+
+@baseUrl = http://127.0.0.1:8080
+@pageId = test-page
+
+### 1. Retrieve Current Config (Cache first)
+GET {{baseUrl}}/api/pageconfig?id={{pageId}}
+
+### 2. Add Field
+POST {{baseUrl}}/api/pageconfig/{{pageId}}/fields
+Content-Type: application/json
+
+{
+    "range_code": "list",
+    "field": {
+        "label": "New Field",
+        "field": "new_field",
+        "type": "input"
+    }
+}
+
+### 3. Edit Field
+PUT {{baseUrl}}/api/pageconfig/{{pageId}}/fields
+Content-Type: application/json
+
+{
+    "range_code": "list",
+    "field": {
+        "label": "Updated Field",
+        "field": "new_field",
+        "type": "input",
+        "props": { "placeholder": "Updated" }
+    }
+}
+
+### 4. Delete Field
+POST {{baseUrl}}/api/pageconfig/{{pageId}}/fields/delete
+Content-Type: application/json
+
+{
+    "range_code": "list",
+    "field_name": "new_field"
+}
+
+### 5. Sync Redis to MongoDB
+POST {{baseUrl}}/api/pageconfig/{{pageId}}/toconfig
