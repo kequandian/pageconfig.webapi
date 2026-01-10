@@ -26,6 +26,9 @@ futures = "0.3"
 tokio-stream = { version = "0.1", features = ["time"] }
 
 # Common modules from existing path
-common-error-code = { path = "../eav/common-rust/common-error-code" }
-common-response = { path = "../eav/common-rust/common-response" }
-common-error = { path = "../eav/common-rust/common-error", features = ["database", "validation"] }
+# common-error-code = { path = "../eav/common-rust/common-error-code" }
+# common-response = { path = "../eav/common-rust/common-response" }
+# common-error = { path = "../eav/common-rust/common-error", features = ["database", "validation"] }
+
+# Shared MongoDB library
+common-mongo-db = { path = "../pageconfig.json-mock/common-mongo-db" }
